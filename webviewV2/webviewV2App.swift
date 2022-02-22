@@ -9,6 +9,8 @@ import SwiftUI
 
 @main
 struct webviewV2App: App {
+    @State var status = false
+    
     var body: some Scene {
         WindowGroup {
             ContentView()
