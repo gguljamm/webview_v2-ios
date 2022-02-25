@@ -30,7 +30,8 @@ struct ContentView: View {
             }
         }
         else {
-            WebView(url: username, viewModel: viewModel)
+            let url = username.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
+            WebView(url: url!, viewModel: viewModel)
         }
     }
 }
