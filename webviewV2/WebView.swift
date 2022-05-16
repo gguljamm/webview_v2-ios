@@ -25,6 +25,11 @@ struct WebView: UIViewRepresentable {
         webView.allowsBackForwardNavigationGestures = true    // 가로로 스와이프 동작이 페이지 탐색을 앞뒤로 트리거하는지 여부
         webView.scrollView.isScrollEnabled = true    // 웹보기와 관련된 스크롤보기에서 스크롤 가능 여부
         
+        WKWebsiteDataStore.default().removeData(ofTypes: // 캐시 모두 삭제
+                [WKWebsiteDataTypeDiskCache, WKWebsiteDataTypeMemoryCache],
+                modifiedSince: Date(timeIntervalSince1970: 0)) {
+                }
+        
         if let url = URL(string: url) {
             webView.load(URLRequest(url: url))    // 지정된 URL 요청 개체에서 참조하는 웹 콘텐츠를로드하고 탐색
         }
